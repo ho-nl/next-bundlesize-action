@@ -21,10 +21,10 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void> {
     const newBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt'))).toString()
 
     const changes = diffLines(cleanOutput(oldBuild), cleanOutput(newBuild))
-    const diff = changes.map(async ({ added, removed, value }) =>
+    const diff = changes.map(({ added, removed, value }) =>
       value
         .split('\n')
-        .map(async (line) => {
+        .map((line) => {
           if (!line) return line
           if (added && removed) return `! ${line}`
           if (added) return `+ ${line}`

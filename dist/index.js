@@ -3043,22 +3043,20 @@ function runDiff(env) {
             const oldBuild = (yield fs_1.promises.readFile(path_1.default.join(env.GITHUB_WORKSPACE, 'old.txt'))).toString();
             const newBuild = (yield fs_1.promises.readFile(path_1.default.join(env.GITHUB_WORKSPACE, 'new.txt'))).toString();
             const changes = diff_1.diffLines(cleanOutput(oldBuild), cleanOutput(newBuild));
-            const diff = changes.map(({ added, removed, value }) => __awaiter(this, void 0, void 0, function* () {
-                return value
-                    .split('\n')
-                    .map((line) => __awaiter(this, void 0, void 0, function* () {
-                    if (!line)
-                        return line;
-                    if (added && removed)
-                        return `! ${line}`;
-                    if (added)
-                        return `+ ${line}`;
-                    if (removed)
-                        return `- ${line}`;
-                    return `# ${line}`;
-                }))
-                    .join('\n');
-            }));
+            const diff = changes.map(({ added, removed, value }) => value
+                .split('\n')
+                .map((line) => {
+                if (!line)
+                    return line;
+                if (added && removed)
+                    return `! ${line}`;
+                if (added)
+                    return `+ ${line}`;
+                if (removed)
+                    return `- ${line}`;
+                return `# ${line}`;
+            })
+                .join('\n'));
             const output = `\`\`\`diff
 ${diff.join('')}
 \`\`\``;
