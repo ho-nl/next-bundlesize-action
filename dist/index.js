@@ -3040,9 +3040,9 @@ function runDiff(env) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             env = Object.assign(Object.assign({}, process.env), env);
-            console.log(yield fs_1.promises.readdir(env.HOME));
-            const oldBuild = (yield fs_1.promises.readFile(path_1.default.join(env.HOME, 'old.txt'))).toString();
-            const newBuild = (yield fs_1.promises.readFile(path_1.default.join(env.HOME, 'new.txt'))).toString();
+            console.log(yield fs_1.promises.readdir(env.GITHUB_WORKSPACE));
+            const oldBuild = (yield fs_1.promises.readFile(path_1.default.join(env.GITHUB_WORKSPACE, 'old.txt'))).toString();
+            const newBuild = (yield fs_1.promises.readFile(path_1.default.join(env.GITHUB_WORKSPACE, 'new.txt'))).toString();
             const changes = diff_1.diffLines(cleanOutput(oldBuild), cleanOutput(newBuild));
             const diff = changes.map(({ added, removed, value }) => __awaiter(this, void 0, void 0, function* () {
                 return value

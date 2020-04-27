@@ -3,7 +3,7 @@ import { runDiff } from '../src/runDiff'
 
 test('creates proper diff', async () => {
   await runDiff({
-    HOME: path.join(__dirname, 'fixture'),
+    GITHUB_WORKSPACE: path.join(__dirname, 'fixture'),
   })
 })
 
