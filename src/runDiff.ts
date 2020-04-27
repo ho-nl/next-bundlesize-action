@@ -17,8 +17,6 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void> {
   try {
     env = { ...process.env, ...env }
 
-    console.log(await fs.readdir(env.GITHUB_WORKSPACE!))
-
     const oldBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString()
     const newBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt'))).toString()
 
