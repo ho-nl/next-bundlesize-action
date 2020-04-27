@@ -22,7 +22,7 @@
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
-    "pack": "ncc build -m",
+    "pack": "ncc build",
     "test": "jest"
   },
   "keywords": [
