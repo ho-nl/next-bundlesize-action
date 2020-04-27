@@ -21,21 +21,21 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void> {
     const newBuild = (await fs.readFile(path.join(env.HOME!, 'new.txt'))).toString()
 
     const changes = diffLines(cleanOutput(oldBuild), cleanOutput(newBuild))
+    const diff = changes.map(async ({ added, removed, value }) =>
+      value
+        .split('\n')
+        .map(async (line) => {
+          if (!line) return line
+          if (added && removed) return `! ${line}`
+          if (added) return `+ ${line}`
+          if (removed) return `- ${line}`
+          return `# ${line}`
+        })
+        .join('\n'),
+    )
+
     const output = `\`\`\`diff
-${changes
-  .map(({ added, removed, value }) => {
-    return value
-      .split('\n')
-      .map((line) => {
-        if (!line) return line
-        if (added && removed) return `! ${line}`
-        if (added) return `+ ${line}`
-        if (removed) return `- ${line}`
-        return `# ${line}`
-      })
-      .join('\n')
-  })
-  .join('')}
+${diff.join('')}
 \`\`\``
 
     setOutput('msg', output)
