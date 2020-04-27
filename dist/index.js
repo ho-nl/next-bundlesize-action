@@ -3061,7 +3061,7 @@ function runDiff(env) {
 ${diff.join('')}
 \`\`\``;
             console.log('diff', output);
-            core_1.setOutput('msg', output);
+            core_1.setOutput('diff', output);
         }
         catch (error) {
             core_1.setFailed(error.message);

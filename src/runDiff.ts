@@ -39,8 +39,7 @@ ${diff.join('')}
 \`\`\``
 
     console.log('diff', output)
-
-    setOutput('msg', output)
+    setOutput('diff', output)
   } catch (error) {
     setFailed(error.message)
   }

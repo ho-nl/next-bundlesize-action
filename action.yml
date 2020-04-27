@@ -4,3 +4,6 @@ author: 'Reach Digital - Paul Hachmang'
 runs:
   using: 'node12'
   main: 'dist/index.js'
+outputs:
+  diff:
+    description: Markdown diff string
