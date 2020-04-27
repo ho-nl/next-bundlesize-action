@@ -17,12 +17,12 @@
     "node": "12.x"
   },
   "scripts": {
-    "all": "yarn build && yarn format && yarn lint && yarn pack && yarn test",
+    "all": "yarn build && yarn format && yarn lint && yarn run pack && yarn test",
     "build": "tsc",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
-    "pack": "ncc build",
+    "pack": "ncc build -m",
     "test": "jest"
   },
   "keywords": [
