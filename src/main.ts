@@ -1,19 +1,3 @@
-import { debug, setOutput, setFailed, getInput } from '@actions/core'
-import { wait } from './wait'
+import { runDiff } from './runDiff'
 
-async function run(): Promise<void> {
-  try {
-    const ms: string = getInput('milliseconds')
-    debug(`Waiting ${ms} milliseconds ...`)
-
-    debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    debug(new Date().toTimeString())
-
-    setOutput('time', new Date().toTimeString())
-  } catch (error) {
-    setFailed(error.message)
-  }
-}
-
-run()
+runDiff()

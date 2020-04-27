@@ -1,0 +1,26 @@
+Warning: No build cache found. Please configure build caching for faster rebuilds. Read more: https://err.sh/next.js/no-cache
+
+Creating an optimized production build...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+Compiled successfully.
+
+Automatically optimizing pages...
+
+Page                                                           Size     First Load JS
+┌ ○ /                                                          6.95 kB          65 kB
+└ ○ /404                                                       3.15 kB        61.2 kB
++ First Load JS shared by all                                  58.1 kB
+  ├ static/pages/_app.js                                       957 B
+  ├ chunks/ab2865830747459e0d6422f87ce72365a6453b73.82b733.js  10.5 kB
+  ├ chunks/framework.0f140d.js                                 40 kB
+  ├ runtime/main.235c69.js                                     5.95 kB
+  └ runtime/webpack.b65cab.js                                  746 B
+
+λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
