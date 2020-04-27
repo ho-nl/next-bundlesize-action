@@ -12,7 +12,7 @@ Compiled successfully.
 Automatically optimizing pages...
 
 Page                                                           Size     First Load JS
-┌ ○ /                                                          7.95 kB          66 kB
+┌ ○ /                                                          6.95 kB          65 kB
 └ ○ /404                                                       3.15 kB        61.2 kB
 + First Load JS shared by all                                  58.1 kB
   ├ static/pages/_app.js                                       957 B
