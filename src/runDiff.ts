@@ -5,7 +5,7 @@ import path from 'path'
 import { diffLines } from 'diff'
 
 const START = 'Automatically optimizing pages...'
-const END = 'λ  ('
+const END = 'First Load JS shared by all'
 
 const cleanOutput = (output: string): string => {
   const start = output.indexOf(START) + START.length

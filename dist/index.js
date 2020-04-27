@@ -3030,7 +3030,7 @@ const fs_1 = __webpack_require__(747);
 const path_1 = __importDefault(__webpack_require__(622));
 const diff_1 = __webpack_require__(799);
 const START = 'Automatically optimizing pages...';
-const END = 'λ  (';
+const END = 'First Load JS shared by all';
 const cleanOutput = (output) => {
     const start = output.indexOf(START) + START.length;
     const end = output.indexOf(END);
