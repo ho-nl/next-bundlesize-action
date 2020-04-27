@@ -40,7 +40,7 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void> {
 ${diff.join('')}
 \`\`\``
 
-    console.log(output)
+    console.log('diff', output)
 
     setOutput('msg', output)
   } catch (error) {
