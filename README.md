@@ -25,9 +25,9 @@ jobs:
       - run: yarn --cwd ./new build > new.txt # build PR branch
       - run: yarn --frozen-lockfile --cwd ./old # install main branch dependencies
       - run: yarn --cwd ./old build > old.txt # build main branch
-      - uses: ho-nl/next-bundlesize-action # create diff markdown
+      - uses: ho-nl/next-bundlesize-action@1.x # create diff markdown
         id: 'bundlesize'
-      - uses: unsplash/comment-on-pr # create comment on PR
+      - uses: unsplash/comment-on-pr@1.x # create comment on PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -62,9 +62,9 @@ jobs:
         env:
           GRAPHQL: ${{ secrets.GRAPHQL }} # custom env variable to be able to build nextjs
           GRAPHQL_BEARER: ${{ secrets.GRAPHQL_BEARER }} # custom env variable to be able to build nextjs
-      - uses: ho-nl/next-bundlesize-action # create diff markdown
+      - uses: ho-nl/next-bundlesize-action@1.x # create diff markdown
         id: 'bundlesize'
-      - uses: unsplash/comment-on-pr # create comment on PR
+      - uses: unsplash/comment-on-pr@1.x # create comment on PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
