@@ -1,3 +1,10 @@
+### [1.0.1](https://github.com/ho-nl/next-bundlesize-action/compare/v1.0.0...v1.0.1) (2020-04-28)
+
+
+### Bug Fixes
+
+* proper documentation to actually make it run ([1acd084](https://github.com/ho-nl/next-bundlesize-action/commit/1acd084cd7ed729a157cac1cd8f651756a61b569))
+
 ## 1.0.0 (2020-04-28)
 
 
