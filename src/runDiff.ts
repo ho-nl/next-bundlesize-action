@@ -40,10 +40,10 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void> {
 
     let output = ''
     if (!hasChanges) {
-      output = `No change in build output and bundle size`
+      output = `**Comparison between main branch and PR:** No change in build output and bundle size`
     } else {
       output = `
-Change in build output or bundle size detected:
+**Comparison between main branch and PR:** Change in build output or bundle size detected:
 
 \`\`\`diff
 ${diff.join('')}
