@@ -62,12 +62,11 @@ jobs:
         env:
           GRAPHQL: ${{ secrets.GRAPHQL }} # custom env variable to be able to build nextjs
           GRAPHQL_BEARER: ${{ secrets.GRAPHQL_BEARER }} # custom env variable to be able to build nextjs
-      - uses: ho-nl/next-bundlesize-action@1.x # create diff markdown
+      - uses: ho-nl/next-bundlesize-action@master # create diff markdown
         id: 'bundlesize'
-      - uses: unsplash/comment-on-pr@1.x # create comment on PR
+      - uses: unsplash/comment-on-pr@master # create comment on PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           msg: ${{steps.bundlesize.outputs.diff}}
-          check_for_duplicate_msg: true
 ```
