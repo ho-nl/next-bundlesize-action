@@ -15,6 +15,8 @@ const cleanOutput = (output: string): string => {
   return output.substring(start, end).replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
 }
 
+const format = Intl.NumberFormat().format
+
 export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | string> {
   try {
     env = { ...process.env, ...env }
@@ -40,14 +42,23 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
         const diff = item['New (kB)'] - item['Old (kB)']
 
         let diffString = ''
-        if (diff === 0) diffString = `☑️ ${diff}`
-        if (diff > 0) diffString = `⚠️ ${diff}`
-        if (diff > 5) diffString = `🚨 ${diff}`
-        if (diff < 0) diffString = ` ${diff}`
+        if (diff === 0) diffString = `☑️ ${format(diff)}`
+        if (diff > 0) diffString = `⚠️ ${format(diff)}`
+        if (diff > 5) diffString = `🚨 ${format(diff)}`
+        if (diff < 0) diffString = ` ${format(diff)}`
 
-        return { ...item, 'Diff (kb)': diffString || '~' }
+        return {
+          ...item,
+          'Old (kB)': format(item['Old (kB)']),
+          'New (kB)': format(item['New (kB)']),
+          'Diff (kb)': diffString || '~',
+        }
       } else {
-        return { ...item }
+        return {
+          ...item,
+          'Old (kB)': format(item['Old (kB)']),
+          'New (kB)': format(item['New (kB)']),
+        }
       }
     })
 
