@@ -44,10 +44,10 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
           const diff = item['New (kB)'] - item['Old (kB)']
 
           let diffString = ''
-          if (diff === 0) diffString = `☑️ ~${format(diff)}`
-          if (diff > 0) diffString = `⚠️ +${format(diff)}`
-          if (diff > 5) diffString = `🚨 +${format(diff)}`
-          if (diff < 0) diffString = `🔥 -${format(diff)}`
+          if (diff > -1 && diff < 1) diffString = `☑️ ~${format(diff)}`
+          if (diff >= 1) diffString = `⚠️ +${format(diff)}`
+          if (diff >= 5) diffString = `🚨 +${format(diff)}`
+          if (diff <= -1) diffString = `🔥 ${format(diff)}`
 
           return {
             ...item,
