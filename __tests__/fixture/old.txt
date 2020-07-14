@@ -3,7 +3,7 @@ Creating an optimized production build
 
 Compiled successfully.
 
-Automatically optimizing pages  
+Automatically optimizing pages...
 
 Page                                                           Size     First Load JS
 ┌ ○ /                                                          6.95 kB          65 kB

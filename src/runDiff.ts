@@ -6,14 +6,13 @@ import { diffLines } from 'diff'
 import shellParser from 'node-shell-parser'
 import asTable from 'as-table'
 
-const START = `Automatically optimizing pages  
-`
+const START = `Automatically optimizing pages`
 const END = '+ First Load JS shared by all'
 
 const cleanOutput = (output: string): string => {
   const start = output.indexOf(START) + START.length
   const end = output.indexOf(END)
-  return output.substring(start, end).replace(/^[\r\n]+|[\r\n]+$/g, '')
+  return output.substring(start, end).replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
 }
 
 export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | string> {
