@@ -27,10 +27,10 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     debug('new build')
     debug(newBuild)
 
-    const formattedOld = asTable(parseOutput(oldBuild))
+    const formattedOld = asTable(parseOutput(oldBuild)) + `\n`
     debug(formattedOld)
 
-    const formattedNew = asTable(parseOutput(newBuild))
+    const formattedNew = asTable(parseOutput(newBuild)) + '\n'
     debug(formattedNew)
 
     const changes = diffLines(formattedOld, formattedNew)
@@ -83,8 +83,8 @@ const parseOutput = (output: string) => {
 
   return result
     .map((resultItem) => ({
-      page: resultItem?.Page?.replace('┌', '').replace('├', '').replace('└', '').trim(),
-      size: Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim()),
+      ['  pages']: resultItem?.Page?.replace('┌', '').replace('├', '').replace('└', '').trim(),
+      kB: Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim()),
     }))
-    .filter((item) => !Number.isNaN(item.size) && item.size > 0)
+    .filter((item) => !Number.isNaN(item.kB) && item.kB > 0)
 }
