@@ -20,4 +20,4 @@ declare namespace NodeJS {
 }
 
 declare module 'node-shell-parser'
-declare module 'as-table'
+declare module 'tablemark'

@@ -32,9 +32,9 @@
   ],
   "dependencies": {
     "@actions/core": "^1.2.4",
-    "as-table": "^1.0.55",
-    "diff": "^4.0.2",
-    "node-shell-parser": "^0.2.1"
+    "lodash-es": "^4.17.15",
+    "node-shell-parser": "^0.2.1",
+    "tablemark": "^2.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
