@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/ho-nl/next-bundlesize-action/compare/v1.0.2...v1.1.0) (2020-07-14)
+
+
+### Features
+
+* cleaned up output ([2fcd8ac](https://github.com/ho-nl/next-bundlesize-action/commit/2fcd8ac2864f9e6cb197d059ef5fdb89851b806e))
+
 ### [1.0.2](https://github.com/ho-nl/next-bundlesize-action/compare/v1.0.1...v1.0.2) (2020-04-28)
 
 
