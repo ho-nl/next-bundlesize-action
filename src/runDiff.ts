@@ -21,7 +21,10 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     env = { ...process.env, ...env }
 
     const oldBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString()
+    console.log('old build:', oldBuild)
+
     const newBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt'))).toString()
+    console.log('new build:', oldBuild)
 
     const changes = diffLines(asTable(parseOutput(oldBuild)), asTable(parseOutput(newBuild)))
     const diff = changes.map(({ added, removed, value }) =>
@@ -70,11 +73,9 @@ const parseOutput = (output: string) => {
   }> = shellParser(cleanOutput(output))
 
   return result
-    .map((resultItem) => {
-      return {
-        page: resultItem.Page.replace('┌', '').replace('├', '').replace('└', '').trim(),
-        size: Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim()),
-      }
-    })
+    .map((resultItem) => ({
+      page: resultItem.Page.replace('┌', '').replace('├', '').replace('└', '').trim(),
+      size: Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim()),
+    }))
     .filter((item) => !Number.isNaN(item.size) && item.size > 0)
 }
