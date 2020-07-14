@@ -1,26 +1,48 @@
-Warning: No build cache found. Please configure build caching for faster rebuilds. Read more: https://err.sh/next.js/no-cache
+info  - Loaded env from /Users/paulhachmang/Sites/reachdigital-next/.env
+warn  - You have enabled experimental feature(s).
+warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use them at your own risk.
 
-Creating an optimized production build...
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
+> [PWA] Compile client (static)
+> [PWA] Auto register service worker with: /Users/paulhachmang/Sites/reachdigital-next/node_modules/next-pwa/register.js
+> [PWA] Service worker: /Users/paulhachmang/Sites/reachdigital-next/public/sw.js
+> [PWA]   url: /sw.js
+> [PWA]   scope: /
+> [PWA] Compile server
+Creating an optimized production build  
 
+Compiled with warnings.
 
-Compiled successfully.
+Conflict: Multiple assets emit different content to the same filename static/css/650baf63bbed8f8032e7.css
 
-Automatically optimizing pages...
+Automatically optimizing pages  
 
-Page                                                           Size     First Load JS
-┌ ○ /                                                          6.95 kB          65 kB
-└ ○ /404                                                       3.15 kB        61.2 kB
-+ First Load JS shared by all                                  58.1 kB
-  ├ static/pages/_app.js                                       957 B
-  ├ chunks/ab2865830747459e0d6422f87ce72365a6453b73.82b733.js  10.5 kB
-  ├ chunks/framework.0f140d.js                                 40 kB
-  ├ runtime/main.235c69.js                                     5.95 kB
-  └ runtime/webpack.b65cab.js                                  746 B
+Page                                   Size     First Load JS
+┌ ● /                                  720 B           189 kB
+├   /_app                              938 B          56.8 kB
+├ ● /[...url]                          34.3 kB         222 kB
+├   └ /venia-bottoms
+├ ○ /404                               1.97 kB        58.8 kB
+├ λ /api/graphql
+├ λ /api/sitemap
+├ ● /page/[url]                        710 B           189 kB
+├   └ /page/home
+└ ● /product/[url]                     814 B           189 kB
+    └ /product/isadora-skirt
++ First Load JS shared by all          56.8 kB
+  ├ static/pages/_app.module.js        938 B
+  ├ chunks/commons.31af0c.module.js    6.95 kB
+  ├ chunks/framework.d5e65f.module.js  40.5 kB
+  ├ runtime/main.8ce5e6.module.js      7.17 kB
+  └ runtime/webpack.ba33b4.module.js   1.3 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 ○  (Static)  automatically rendered as static HTML (uses no initial props)
 ●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
+
+Rewrites
+
+┌ source: /sitemap.xml
+└ destination: /api/sitemap
+ 
+
+✨  Done in 27.45s.

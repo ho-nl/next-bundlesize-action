@@ -2,12 +2,8 @@ import path from 'path'
 import { runDiff } from '../src/runDiff'
 
 test('creates proper diff', async () => {
-  await runDiff({
+  const diff = await runDiff({
     GITHUB_WORKSPACE: path.join(__dirname, 'fixture'),
   })
+  console.log(diff)
 })
-
-test('wait 500 ms', async () => {})
-
-// shows how the runner will run a javascript action with env / stdout protocol
-test('test runs', () => {})

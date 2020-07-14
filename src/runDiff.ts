@@ -3,8 +3,11 @@ import { setOutput, setFailed } from '@actions/core'
 import { promises as fs } from 'fs'
 import path from 'path'
 import { diffLines } from 'diff'
+import shellParser from 'node-shell-parser'
+import asTable from 'as-table'
 
-const START = 'Load JS'
+const START = `Automatically optimizing pages  
+`
 const END = '+ First Load JS shared by all'
 
 const cleanOutput = (output: string): string => {
@@ -13,14 +16,14 @@ const cleanOutput = (output: string): string => {
   return output.substring(start, end).replace(/^[\r\n]+|[\r\n]+$/g, '')
 }
 
-export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void> {
+export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | string> {
   try {
     env = { ...process.env, ...env }
 
     const oldBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString()
     const newBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt'))).toString()
 
-    const changes = diffLines(cleanOutput(oldBuild), cleanOutput(newBuild))
+    const changes = diffLines(asTable(parseOutput(oldBuild)), asTable(parseOutput(newBuild)))
     const diff = changes.map(({ added, removed, value }) =>
       value
         .split('\n')
@@ -49,10 +52,29 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void> {
 ${diff.join('')}
 \`\`\``
     }
-
-    console.log(output)
     setOutput('diff', output)
+
+    return output
   } catch (error) {
     setFailed(error.message)
   }
+}
+
+const parseOutput = (output: string) => {
+  const result: Array<{
+    Page: string
+    Size: string
+    First: string
+    Load: string
+    JS: string
+  }> = shellParser(cleanOutput(output))
+
+  return result
+    .map((resultItem) => {
+      return {
+        page: resultItem.Page.replace('┌', '').replace('├', '').replace('└', '').trim(),
+        size: Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim()),
+      }
+    })
+    .filter((item) => !Number.isNaN(item.size) && item.size > 0)
 }

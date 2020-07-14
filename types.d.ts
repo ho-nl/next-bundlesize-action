@@ -18,3 +18,6 @@ declare namespace NodeJS {
     GITHUB_BASE_REF: string
   }
 }
+
+declare module 'node-shell-parser'
+declare module 'as-table'
