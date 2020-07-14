@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { setOutput, setFailed } from '@actions/core'
+import { setOutput, setFailed, debug } from '@actions/core'
 import { promises as fs } from 'fs'
 import path from 'path'
 import { diffLines } from 'diff'
@@ -21,10 +21,12 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     env = { ...process.env, ...env }
 
     const oldBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString()
-    console.log('old build:', oldBuild)
+    debug('old build')
+    debug(oldBuild)
 
     const newBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt'))).toString()
-    console.log('new build:', oldBuild)
+    debug('new build')
+    debug(oldBuild)
 
     const changes = diffLines(asTable(parseOutput(oldBuild)), asTable(parseOutput(newBuild)))
     const diff = changes.map(({ added, removed, value }) =>
@@ -72,9 +74,11 @@ const parseOutput = (output: string) => {
     JS: string
   }> = shellParser(cleanOutput(output))
 
+  debug(JSON.stringify(result))
+
   return result
     .map((resultItem) => ({
-      page: resultItem.Page.replace('┌', '').replace('├', '').replace('└', '').trim(),
+      page: resultItem?.Page?.replace('┌', '').replace('├', '').replace('└', '').trim(),
       size: Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim()),
     }))
     .filter((item) => !Number.isNaN(item.size) && item.size > 0)
