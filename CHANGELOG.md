@@ -1,3 +1,10 @@
+### [1.1.1](https://github.com/ho-nl/next-bundlesize-action/compare/v1.1.0...v1.1.1) (2020-07-14)
+
+
+### Bug Fixes
+
+* add debug output ([8da93b6](https://github.com/ho-nl/next-bundlesize-action/commit/8da93b6f6681b4e5fe46b6516d41ab54747e2a63))
+
 ## [1.1.0](https://github.com/ho-nl/next-bundlesize-action/compare/v1.0.2...v1.1.0) (2020-07-14)
 
 
