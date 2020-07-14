@@ -45,9 +45,9 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
 
           let diffString = ''
           if (diff > -1 && diff < 1) diffString = `☑️ ${format(diff)}`
-          if (diff >= 1) diffString = `⚠️ +${format(diff)}`
-          if (diff >= 5) diffString = `🚨 +${format(diff)}`
-          if (diff <= -1) diffString = `🔥 ${format(diff)}`
+          if (diff >= 1) diffString = `⚠️  +${format(diff)}`
+          if (diff >= 5) diffString = `🚨  +${format(diff)}`
+          if (diff <= -1) diffString = `🔥  ${format(diff)}`
 
           return {
             ...item,
@@ -80,7 +80,13 @@ const parseOutput = (output: string, isNew = false) => {
   return result.map((resultItem) => {
     const kb = Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim())
     return {
-      Page: resultItem?.Page?.replace('┌', '').replace('├', '').replace('└', '').trim(),
+      Page: resultItem?.Page?.replace('┌', '')
+        .replace('├', '')
+        .replace('└', '')
+        .replace('●', '')
+        .replace('○', '')
+        .replace('λ', '')
+        .trim(),
       ...(isNew && { 'New (kB)': kb }),
       ...(!isNew && { 'Old (kB)': kb }),
     }
