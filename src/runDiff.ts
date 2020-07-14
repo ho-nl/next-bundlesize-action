@@ -38,22 +38,23 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     const merged = merge(parseOutput(oldBuild), parseOutput(newBuild, true))
 
     const res = merged
-      .filter((item) => item['New (kB)'] && item['Old (kB)'])
+      .filter((item) => item.New && item.Old)
       .map((item) => {
-        if (item['New (kB)'] && item['Old (kB)']) {
-          const diff = item['New (kB)'] - item['Old (kB)']
+        if (item.New && item.Old) {
+          const diff = item.New - item.Old
 
           let diffString = ''
-          if (diff > -1 && diff < 1) diffString = `☑️ ${format(diff)}`
-          if (diff >= 1) diffString = `⚠️  +${format(diff)}`
-          if (diff >= 5) diffString = `🚨  +${format(diff)}`
-          if (diff <= -1) diffString = `🔥  ${format(diff)}`
+          if (diff > -1 && diff < 1) diffString = `☑️  ${format(diff)}kB`
+          if (diff >= 1) diffString = `⚠️  +${format(diff)}kB`
+          if (diff >= 5) diffString = `🚨  +${format(diff)}kB`
+          if (diff <= -1) diffString = `🔥  ${format(diff)}kB`
+          if (diff === 0) diffString = ''
 
           return {
             ...item,
-            'Old (kB)': format(item['Old (kB)']),
-            'New (kB)': format(item['New (kB)']),
-            'Diff (kb)': diffString || '~',
+            Old: `${format(item['Old'])}kB`,
+            New: `${format(item['New'])}kB`,
+            Diff: diffString,
           }
         }
       })
@@ -87,8 +88,8 @@ const parseOutput = (output: string, isNew = false) => {
         .replace('○', '')
         .replace('λ', '')
         .trim(),
-      ...(isNew && { 'New (kB)': kb }),
-      ...(!isNew && { 'Old (kB)': kb }),
+      ...(isNew && { New: kb }),
+      ...(!isNew && { Old: kb }),
     }
   })
 }
