@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: 12
       - run: yarn --frozen-lockfile
+      - run: yarn all
       - run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
