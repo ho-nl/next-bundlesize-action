@@ -7,15 +7,20 @@ import tablemark from 'tablemark'
 import { merge } from 'lodash'
 
 const START = `Automatically optimizing pages`
+const STARTNEW = `Finalizing page optimization...`
 const END = '+ First Load JS shared by all'
 
 const cleanOutput = (output: string): string => {
-  const start = output.indexOf(START) + START.length
-  const end = output.indexOf(END)
-  return output.substring(start, end).replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
-}
+  if (output.includes(START)) {
+    return output
+      .substring(output.indexOf(START) + START.length, output.indexOf(END))
+      .replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
+  }
 
-const format = Intl.NumberFormat().format
+  return output
+    .substring(output.indexOf(STARTNEW) + STARTNEW.length, output.indexOf(END))
+    .replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
+}
 
 export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | string> {
   try {
@@ -37,6 +42,7 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
 
     const merged = merge(parseOutput(oldBuild), parseOutput(newBuild, true))
 
+    const formatter = Intl.NumberFormat()
     const res = merged
       .filter((item) => item.New && item.Old)
       .map((item) => {
@@ -44,16 +50,16 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
           const diff = item.New - item.Old
 
           let diffString = ''
-          if (diff > -1 && diff < 1) diffString = `☑️  ${format(diff)}kB`
-          if (diff >= 1) diffString = `⚠️  +${format(diff)}kB`
-          if (diff >= 5) diffString = `🚨  +${format(diff)}kB`
-          if (diff <= -1) diffString = `🔥  ${format(diff)}kB`
+          if (diff > -1 && diff < 1) diffString = `☑️  ${formatter.format(diff)}kB`
+          if (diff >= 1) diffString = `⚠️  +${formatter.format(diff)}kB`
+          if (diff >= 5) diffString = `🚨  +${formatter.format(diff)}kB`
+          if (diff <= -1) diffString = `🔥  ${formatter.format(diff)}kB`
           if (diff === 0) diffString = ''
 
           return {
             ...item,
-            Old: `${format(item['Old'])}kB`,
-            New: `${format(item['New'])}kB`,
+            Old: `${formatter.format(item['Old'])}kB`,
+            New: `${formatter.format(item['New'])}kB`,
             Diff: diffString,
           }
         }
@@ -75,6 +81,8 @@ const parseOutput = (output: string, isNew = false) => {
     Load: string
     JS: string
   }> = shellParser(cleanOutput(output))
+
+  console.log(result)
 
   debug(JSON.stringify(result))
 
