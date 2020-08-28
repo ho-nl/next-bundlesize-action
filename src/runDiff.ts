@@ -82,8 +82,6 @@ const parseOutput = (output: string, isNew = false) => {
     JS: string
   }> = shellParser(cleanOutput(output))
 
-  console.log(result)
-
   debug(JSON.stringify(result))
 
   return result.map((resultItem) => {
