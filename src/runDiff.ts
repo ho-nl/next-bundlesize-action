@@ -17,9 +17,13 @@ const cleanOutput = (output: string): string => {
       .replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
   }
 
-  return output
-    .substring(output.indexOf(STARTNEW) + STARTNEW.length, output.indexOf(END))
-    .replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
+  if (output.includes(STARTNEW)) {
+    return output
+      .substring(output.indexOf(STARTNEW) + STARTNEW.length, output.indexOf(END))
+      .replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
+  }
+
+  throw new Error('Ouput START can not be found')
 }
 
 export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | string> {
@@ -88,12 +92,12 @@ const parseOutput = (output: string, isNew = false) => {
     const kb = Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim())
     return {
       Page: resultItem?.Page?.replace('┌', '')
-        .replace('├', '')
-        .replace('└', '')
-        .replace('●', '')
-        .replace('○', '')
-        .replace('λ', '')
-        .trim(),
+        ?.replace('├', '')
+        ?.replace('└', '')
+        ?.replace('●', '')
+        ?.replace('○', '')
+        ?.replace('λ', '')
+        ?.trim(),
       ...(isNew && { New: kb }),
       ...(!isNew && { Old: kb }),
     }
