@@ -5,5 +5,5 @@ test('creates proper diff', async () => {
   const diff = await runDiff({
     GITHUB_WORKSPACE: path.join(__dirname, 'fixture'),
   })
-  console.log(diff)
+  console.log(`\n${diff}`)
 })

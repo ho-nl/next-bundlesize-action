@@ -7,7 +7,7 @@ import tablemark from 'tablemark'
 import { merge } from 'lodash'
 
 const START = `Automatically optimizing pages`
-const STARTNEW = `Finalizing page optimization...`
+const STARTNEW = `Finalizing page optimization`
 const END = '+ First Load JS shared by all'
 
 const cleanOutput = (output: string): string => {
@@ -30,44 +30,50 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
   try {
     env = { ...process.env, ...env }
 
-    const oldBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString()
-    debug('old build')
-    debug(oldBuild)
+    const pages = new Set<string>()
 
-    const newBuild = (await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt'))).toString()
-    debug('new build')
-    debug(newBuild)
+    const oldBuild = Object.fromEntries(
+      parseOutput((await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString())
+        .filter((p) => p.Old)
+        .map((p) => {
+          pages.add(p.Page)
+          return [p.Page, p.Old ?? 0]
+        }),
+    )
 
-    const formattedOld = (tablemark(parseOutput(oldBuild)) as string) + `\n`
-    debug(formattedOld)
-
-    const formattedNew = (tablemark(parseOutput(newBuild, true)) as string) + '\n'
-    debug(formattedNew)
-
-    const merged = merge(parseOutput(oldBuild), parseOutput(newBuild, true))
+    const newBuild = Object.fromEntries(
+      parseOutput((await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt'))).toString(), true)
+        .filter((p) => p.New)
+        .map((p) => {
+          pages.add(p.Page)
+          return [p.Page, p.New ?? 0]
+        }),
+    )
 
     const formatter = Intl.NumberFormat()
-    const res = merged
-      .filter((item) => item.New && item.Old)
-      .map((item) => {
-        if (item.New && item.Old) {
-          const diff = item.New - item.Old
+    const res = [...pages.values()].map((page) => {
+      console.log(page)
+      const Old = oldBuild?.[page]
+      const New = newBuild?.[page]
 
-          let diffString = ''
-          if (diff > -1 && diff < 1) diffString = `☑️  ${formatter.format(diff)}kB`
-          if (diff >= 1) diffString = `⚠️  +${formatter.format(diff)}kB`
-          if (diff >= 5) diffString = `🚨  +${formatter.format(diff)}kB`
-          if (diff <= -1) diffString = `🔥  ${formatter.format(diff)}kB`
-          if (diff === 0) diffString = ''
+      const diff = (New ?? 0) - (Old ?? 0)
 
-          return {
-            ...item,
-            Old: `${formatter.format(item['Old'])}kB`,
-            New: `${formatter.format(item['New'])}kB`,
-            Diff: diffString,
-          }
-        }
-      })
+      let diffString = ''
+      if (diff > -1 && diff < 1) diffString = `☑️  ${formatter.format(diff)}kB`
+      if (diff >= 1) diffString = `⚠️  +${formatter.format(diff)}kB`
+      if (diff >= 5) diffString = `🚨  +${formatter.format(diff)}kB`
+      if (diff <= -1) diffString = `🔥  ${formatter.format(diff)}kB`
+      if (diff === 0) diffString = ''
+
+      return {
+        Page: page,
+        Old: Old ? `${formatter.format(Old)}kB` : '',
+        New: `${formatter.format(New)}kB`,
+        Diff: !Old && New ? '🚀' : diffString,
+      }
+    })
+
+    console.log(res)
 
     const table = tablemark(res, { caseHeaders: false })
     setOutput('diff', table)
@@ -86,18 +92,23 @@ const parseOutput = (output: string, isNew = false) => {
     JS: string
   }> = shellParser(cleanOutput(output))
 
-  debug(JSON.stringify(result))
-
   return result.map((resultItem) => {
     const kb = Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim())
+
+    let Page = resultItem?.Page?.replace('┌', '')
+      ?.replace('├', '')
+      ?.replace('└', '')
+      ?.replace('●', '')
+      ?.replace('○', '')
+      ?.replace('λ', '')
+      ?.trim()
+
+    const timeStart = Page.indexOf('(')
+    if (Page.indexOf('(') > 0) {
+      Page = Page.substr(0, timeStart).trim()
+    }
     return {
-      Page: resultItem?.Page?.replace('┌', '')
-        ?.replace('├', '')
-        ?.replace('└', '')
-        ?.replace('●', '')
-        ?.replace('○', '')
-        ?.replace('λ', '')
-        ?.trim(),
+      Page,
       ...(isNew && { New: kb }),
       ...(!isNew && { Old: kb }),
     }

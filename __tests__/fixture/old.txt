@@ -1,216 +1,122 @@
-yarn run v1.22.4
-$ TS_NODE_COMPILER_OPTIONS='{"module":"commonjs"}' graphql-codegen && next build
-[13:58:54] Parse configuration [started]
-[13:58:54] Parse configuration [completed]
-[13:58:54] Generate outputs [started]
-[13:58:54] Generate generated/fragments.json [started]
-[13:58:54] Generate generated/schema.graphql [started]
-[13:58:54] Generate generated/graphql.d.ts [started]
-[13:58:54] Generate generated/apollo.ts [started]
-[13:58:54] Load GraphQL schemas [started]
-[13:58:54] Load GraphQL schemas [started]
-[13:58:54] Load GraphQL schemas [started]
-[13:58:54] Load GraphQL schemas [started]
-[13:58:57] Load GraphQL schemas [completed]
-[13:58:57] Load GraphQL documents [started]
-[13:59:00] Load GraphQL schemas [completed]
-[13:59:00] Load GraphQL documents [started]
-[13:59:02] Load GraphQL schemas [completed]
-[13:59:02] Load GraphQL documents [started]
-[13:59:05] Load GraphQL schemas [completed]
-[13:59:05] Load GraphQL documents [started]
-[13:59:05] Load GraphQL documents [completed]
-[13:59:05] Generate [started]
-[13:59:06] Generate [completed]
-[13:59:06] Generate generated/graphql.d.ts [completed]
-[13:59:06] Load GraphQL documents [completed]
-[13:59:06] Generate [started]
-[13:59:06] Generate [completed]
-[13:59:06] Generate generated/fragments.json [completed]
-[13:59:06] Load GraphQL documents [completed]
-[13:59:06] Generate [started]
-[13:59:07] Generate [completed]
-[13:59:07] Generate generated/apollo.ts [completed]
-[13:59:07] Load GraphQL documents [completed]
-[13:59:07] Generate [started]
-[13:59:07] Generate [completed]
-[13:59:07] Generate generated/schema.graphql [completed]
-[13:59:07] Generate outputs [completed]
-info  - Loaded env from /Users/paulhachmang/Sites/project-reachdigital.nl/.env
+info  - Using webpack 5. Reason: Enabled by default https://nextjs.org/docs/messages/webpack5
+warn  - No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+info  - Checking validity of types...
 info  - Creating an optimized production build...
 > [PWA] Compile client (static)
-> [PWA] Auto register service worker with: /Users/paulhachmang/Sites/project-reachdigital.nl/node_modules/next-pwa/register.js
-> [PWA] Service worker: /Users/paulhachmang/Sites/project-reachdigital.nl/public/sw.js
+> [PWA] Auto register service worker with: /home/runner/work/m2-pwa/m2-pwa/old/node_modules/next-pwa/register.js
+> [PWA] Service worker: /home/runner/work/m2-pwa/m2-pwa/old/examples/soxbase/public/sw.js
 > [PWA]   url: /sw.js
 > [PWA]   scope: /
 > [PWA] Compile server
 info  - Compiled successfully
 info  - Collecting page data...
-info  - Generating static pages (0/90)
-info  - Generating static pages (1/90)
-info  - Generating static pages (2/90)
-info  - Generating static pages (3/90)
-info  - Generating static pages (4/90)
-info  - Generating static pages (5/90)
-info  - Generating static pages (6/90)
-info  - Generating static pages (7/90)
-info  - Generating static pages (8/90)
-info  - Generating static pages (9/90)
-info  - Generating static pages (10/90)
-info  - Generating static pages (11/90)
-info  - Generating static pages (12/90)
-info  - Generating static pages (13/90)
-info  - Generating static pages (14/90)
-info  - Generating static pages (15/90)
-info  - Generating static pages (16/90)
-info  - Generating static pages (17/90)
-info  - Generating static pages (18/90)
-info  - Generating static pages (19/90)
-info  - Generating static pages (20/90)
-info  - Generating static pages (21/90)
-info  - Generating static pages (22/90)
-info  - Generating static pages (23/90)
-info  - Generating static pages (24/90)
-info  - Generating static pages (25/90)
-info  - Generating static pages (26/90)
-info  - Generating static pages (27/90)
-info  - Generating static pages (28/90)
-info  - Generating static pages (29/90)
-info  - Generating static pages (30/90)
-info  - Generating static pages (31/90)
-info  - Generating static pages (32/90)
-info  - Generating static pages (33/90)
-info  - Generating static pages (34/90)
-info  - Generating static pages (35/90)
-info  - Generating static pages (36/90)
-info  - Generating static pages (37/90)
-info  - Generating static pages (38/90)
-info  - Generating static pages (39/90)
-info  - Generating static pages (40/90)
-info  - Generating static pages (41/90)
-info  - Generating static pages (42/90)
-info  - Generating static pages (43/90)
-info  - Generating static pages (44/90)
-info  - Generating static pages (45/90)
-info  - Generating static pages (46/90)
-info  - Generating static pages (47/90)
-info  - Generating static pages (48/90)
-info  - Generating static pages (49/90)
-info  - Generating static pages (50/90)
-info  - Generating static pages (51/90)
-info  - Generating static pages (52/90)
-info  - Generating static pages (53/90)
-info  - Generating static pages (54/90)
-info  - Generating static pages (55/90)
-info  - Generating static pages (56/90)
-info  - Generating static pages (57/90)
-info  - Generating static pages (58/90)
-info  - Generating static pages (59/90)
-info  - Generating static pages (60/90)
-info  - Generating static pages (61/90)
-info  - Generating static pages (62/90)
-info  - Generating static pages (63/90)
-info  - Generating static pages (64/90)
-info  - Generating static pages (65/90)
-info  - Generating static pages (66/90)
-info  - Generating static pages (67/90)
-info  - Generating static pages (68/90)
-info  - Generating static pages (69/90)
-info  - Generating static pages (70/90)
-info  - Generating static pages (71/90)
-info  - Generating static pages (72/90)
-info  - Generating static pages (73/90)
-info  - Generating static pages (74/90)
-info  - Generating static pages (75/90)
-info  - Generating static pages (76/90)
-info  - Generating static pages (77/90)
-info  - Generating static pages (78/90)
-info  - Generating static pages (79/90)
-info  - Generating static pages (80/90)
-info  - Generating static pages (81/90)
-info  - Generating static pages (82/90)
-info  - Generating static pages (83/90)
-info  - Generating static pages (84/90)
-info  - Generating static pages (85/90)
-info  - Generating static pages (86/90)
-info  - Generating static pages (87/90)
-info  - Generating static pages (88/90)
-info  - Generating static pages (89/90)
-info  - Generating static pages (90/90)
+info  - Generating static pages (0/165)
+info  - Generating static pages (41/165)
+info  - Generating static pages (82/165)
+info  - Generating static pages (123/165)
+info  - Generating static pages (165/165)
 info  - Finalizing page optimization...
 
-Page                                                                        Size     First Load JS
-┌ ● /                                                                       2.09 kB         145 kB
-├   /_app                                                                   0 B            55.8 kB
-├ ○ /404                                                                    609 B           115 kB
-├ ● /algemene-voorwaarden-magento-webshop-ontwikkeling                      347 B           143 kB
-├ λ /api/__generateRoutes                                                   0 B            55.8 kB
-├ λ /api/graphql                                                            0 B            55.8 kB
-├ λ /api/sitemap                                                            0 B            55.8 kB
-├ ● /blog                                                                   598 B           143 kB
-├ ● /blog/[url]                                                             1.66 kB         144 kB
-├   ├ /blog/100-100-mobile-performance-lighthouse-score-met-magento-2
-├   ├ /blog/1-klik-bestellen-instant-purchase-magento-ideal
-├   ├ /blog/5-tips-webshop-hoger-in-google-online-marketing-strategie-2018
-├   └ [+43 more paths]
-├ ● /business-to-business-webshop                                           2.12 kB         145 kB
-├ ● /contact                                                                634 B           143 kB
-├ ● /e-commerce-diensten                                                    728 B           143 kB
-├ ● /e-commerce-diensten/doorontwikkeling                                   2.81 kB         145 kB
-├ ● /e-commerce-diensten/magento-module-ontwikkeling                        2.66 kB         145 kB
-├ ● /e-commerce-diensten/ontwikkeling-nieuwe-magento-webshops               2.58 kB         145 kB
-├ ● /e-commerce-diensten/replatforming-webshop-migratie-naar-magento        1.15 kB         144 kB
-├ ● /e-commerce-diensten/snelheid                                           3.07 kB         146 kB
-├ ● /e-commerce-diensten/UX-en-visual-design-voor-e-commerce                2.47 kB         145 kB
-├ ● /en                                                                     2.12 kB         145 kB
-├ ● /en/blog                                                                621 B           143 kB
-├ ● /en/blog/[url]                                                          1.69 kB         144 kB
-├   ├ /en/blog/magento-graphql-pwa
-├   └ /en/blog/magento-msi-multi-source-inventory-features
-├ ● /en/contact                                                             659 B           143 kB
-├ ● /klantervaringen                                                        312 B           143 kB
-├ ● /magento-2/[url]                                                        2.87 kB         145 kB
-├   ├ /magento-2/magento-2-community-webshop
-├   └ /magento-2/magento-2-enterprise-webshop
-├ ● /magento-vacature                                                       1.76 kB         144 kB
-├ ● /magento-webshop                                                        866 B           143 kB
-├ ● /magento-webshop-offerte-aanvragen                                      2.55 kB         145 kB
-├ ● /over-reach-digital-magento-experts                                     4.02 kB         147 kB
-├ ● /portfolio-magento-e-commerce-projecten                                 1.28 kB         144 kB
-├ ● /portfolio-magento-e-commerce-projecten/[url]                           1.46 kB         144 kB
-├   ├ /portfolio-magento-e-commerce-projecten/adyen
-├   ├ /portfolio-magento-e-commerce-projecten/da
-├   ├ /portfolio-magento-e-commerce-projecten/diodrogist
-├   └ [+6 more paths]
-├ ● /vacature-php-developer                                                 1.77 kB         144 kB
-├ ● /vacature-php-developer/[url]                                           1.23 kB         144 kB
-├   ├ /vacature-php-developer/vacature-frontend-developer
-├   ├ /vacature-php-developer/vacature-magento-developer
-├   └ /vacature-php-developer/vacature-php-developer-medior
-├ ● /vacatures                                                              1.76 kB         144 kB
-├ ● /vacatures/[url]                                                        1.23 kB         144 kB
-├   ├ /vacatures/vacature-allround-financieel-manager
-├   ├ /vacatures/vacature-project-manager
-├   └ /vacatures/vacature-ux-visual-designer
-└ ● /webshop-laten-bouwen                                                   871 B           144 kB
-+ First Load JS shared by all                                               55.8 kB
-  ├ chunks/commons.dec301.module.js                                         5.96 kB
-  ├ chunks/framework.75810d.module.js                                       40.5 kB
-  ├ chunks/main.e80cd8.module.js                                            7.32 kB
-  ├ chunks/pages/_app.554207.module.js                                      801 B
-  └ chunks/webpack.7dc42c.module.js                                         1.25 kB
+Page                                                                                         Size     First Load JS
+┌ ● /                                                                                        387 B           230 kB
+├   /_app                                                                                    0 B             147 kB
+├ ● /[...url]                                                                                3.41 kB         250 kB
+├   ├ /nl/women
+├   ├ /fr-be/women
+├   ├ /en/women
+├   └ /nl-be/women
+├ ○ /404                                                                                     7.13 kB         223 kB
+├ ● /account                                                                                 12.7 kB         198 kB
+├ ● /account/addresses                                                                       7.75 kB         210 kB
+├ ● /account/addresses/add                                                                   7.27 kB         225 kB
+├ ● /account/addresses/edit                                                                  6.66 kB         228 kB
+├ ● /account/authentication                                                                  4.7 kB          223 kB
+├ ● /account/contact                                                                         5.02 kB         224 kB
+├ ● /account/forgot*** kB          220 kB
+├ ● /account/name                                                                            4.02 kB         225 kB
+├ ● /account/orders                                                                          7.31 kB         199 kB
+├ ● /account/orders/view                                                                     6.13 kB         198 kB
+├ ● /account/reviews                                                                         10.3 kB         193 kB
+├ ● /account/reviews/add                                                                     12.5 kB         221 kB
+├ ● /account/signin                                                                          7.15 kB         229 kB
+├ ● /blog                                                                                    2.56 kB         233 kB
+├ ● /blog/[url]                                                                              2.01 kB         232 kB
+├ ● /blog/page/[page]                                                                        2.53 kB         233 kB
+├ ● /blog/tagged/[url]                                                                       2.02 kB         232 kB
+├ ● /brands/[url]                                                                            3.32 kB         229 kB
+├   ├ /nl/brands/index
+├   ├ /fr-be/brands/index
+├   ├ /en/brands/index
+├   └ /nl-be/brands/index
+├ ● /cart                                                                                    13 kB           232 kB
+├ ● /checkout/payment                                                                        79.3 kB         294 kB
+├ ● /checkout/success                                                                        8.57 kB         197 kB
+├ ● /customer/account/createPassword                                                         8.49 kB         221 kB
+├ ● /legal/[url]                                                                             3.31 kB         229 kB
+├   ├ /nl/legal/index
+├   ├ /fr-be/legal/index
+├   ├ /en/legal/index
+├   └ /nl-be/legal/index
+├ ● /modal/[...url]                                                                          7.36 kB         209 kB
+├   ├ /nl/modal/modal
+├   ├ /fr-be/modal/modal
+├   ├ /en/modal/modal
+├   └ /nl-be/modal/modal
+├ ● /page/[url]                                                                              298 B           230 kB
+├   ├ /nl/page/home
+├   ├ /nl/page/no-route
+├   ├ /fr-be/page/home
+├   └ [+5 more paths]
+├ ● /product/[url]                                                                           1.67 kB         257 kB
+├ ● /product/bundle/[url]                                                                    1.62 kB         257 kB
+├   ├ /nl/product/bundle/giftcard-bundle-gc-1098
+├   ├ /fr-be/product/bundle/giftcard-bundle-gc-1098
+├   ├ /en/product/bundle/giftcard-bundle-gc-1098
+├   └ /nl-be/product/bundle/giftcard-bundle-gc-1098
+├ ● /product/configurable/[url]                                                              6.25 kB         260 kB
+├   ├ /nl/product/configurable/gc-fruity-sock
+├   ├ /fr-be/product/configurable/gc-fruity-sock
+├   ├ /en/product/configurable/gc-fruity-sock
+├   └ /nl-be/product/configurable/gc-fruity-sock
+├ ● /product/downloadable/[url]                                                              1.57 kB         257 kB
+├   ├ /nl/product/downloadable/tamara-socks-printable-birthday-postcard-gc-533-bdayprint
+├   ├ /fr-be/product/downloadable/tamara-socks-printable-birthday-postcard-gc-533-bdayprint
+├   ├ /en/product/downloadable/tamara-socks-printable-birthday-postcard-gc-533-bdayprint
+├   └ /nl-be/product/downloadable/tamara-socks-printable-birthday-postcard-gc-533-bdayprint
+├ ● /product/grouped/[url]                                                                   1.77 kB         258 kB
+├ ● /product/virtual/[url]                                                                   1.45 kB         257 kB
+├ ● /search/[[...url]]                                                                       4.08 kB         248 kB
+├   └ /nl/search
+├ ● /service/[[...url]]                                                                      7.92 kB         206 kB
+├   ├ /nl/service
+├   ├ /fr-be/service
+├   ├ /en/service
+├   └ /nl-be/service
+├ ● /switch-stores                                                                           8.24 kB         185 kB
+├ ● /test/[[...url]]                                                                         3.67 kB         216 kB
+├   ├ /nl/test/index
+├   ├ /nl/test/other
+├   ├ /fr-be/test/index
+├   └ [+5 more paths]
+├ ● /test/full-page-shell-no-title                                                           4.1 kB          216 kB
+├ ● /test/minimal-page-shell-subheader/[[...url]]                                            9.72 kB         233 kB
+├   └ /nl/test/minimal-page-shell-subheader
+├ ○ /test/minimal-page-shell/[[...url]]                                                      5.52 kB         180 kB
+├ ○ /test/sheet/[[...url]]                                                                   7.43 kB         193 kB
+├ ● /test/slider                                                                             6.21 kB         215 kB
+└ ● /test/typography                                                                         6.17 kB         171 kB
++ First Load JS shared by all                                                                147 kB
+  ├ chunks/framework.56dc96.js                                                               42.7 kB
+  ├ chunks/main.4a9126.js                                                                    21.8 kB
+  ├ chunks/pages/_app.82efbb.js                                                              80.7 kB
+  └ chunks/webpack.1b1c12.js                                                                 1.61 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 ○  (Static)  automatically rendered as static HTML (uses no initial props)
 ●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
    (ISR)     incremental static regeneration (uses revalidate in getStaticProps)
-
-Redirects
-
-┌ source: /:path+/
-├ destination: /:path+
-└ permanent: true
- 
-
-$ ts-node -O '{"module":"commonjs"}' --transpile-only lib/lighthouse.ts
-Done in 78.14s.
