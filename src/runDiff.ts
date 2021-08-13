@@ -34,52 +34,60 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
 
     const oldBuild = Object.fromEntries(
       parseOutput((await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString())
-        .filter((p) => p.Old)
+        .filter((p) => p.firstLoad)
         .map((p) => {
           pages.add(p.Page)
-          return [p.Page, p.Old ?? 0]
+          return [p.Page, { firstLoad: p.firstLoad ?? 0, size: p.size ?? 0 }]
         }),
     )
 
     const newBuild = Object.fromEntries(
       parseOutput((await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt'))).toString(), true)
-        .filter((p) => p.New)
+        .filter((p) => p.firstLoad)
         .map((p) => {
           pages.add(p.Page)
-          return [p.Page, p.New ?? 0]
+          return [p.Page, { firstLoad: p.firstLoad ?? 0, size: p.size ?? 0 }]
         }),
     )
 
     const formatter = Intl.NumberFormat()
+    const formatSize = Intl.NumberFormat(undefined, {
+      minimumFractionDigits: 1,
+    })
     const res = [...pages.values()].map((page) => {
-      console.log(page)
-      const Old = oldBuild?.[page]
-      const New = newBuild?.[page]
-
-      const diff = (New ?? 0) - (Old ?? 0)
-
-      let diffString = ''
-      if (diff > -1 && diff < 1) diffString = `☑️  ${formatter.format(diff)}kB`
-      if (diff >= 1) diffString = `⚠️  +${formatter.format(diff)}kB`
-      if (diff >= 5) diffString = `🚨  +${formatter.format(diff)}kB`
-      if (diff <= -1) diffString = `🔥  ${formatter.format(diff)}kB`
-      if (diff === 0) diffString = ''
+      const Old = oldBuild?.[page]?.firstLoad
+      const oldSize = oldBuild?.[page]?.size
+      const New = newBuild?.[page]?.firstLoad
+      const newSize = newBuild?.[page]?.size
 
       return {
         Page: page,
-        Old: Old ? `${formatter.format(Old)}kB` : '',
-        New: `${formatter.format(New)}kB`,
-        Diff: !Old && New ? '🚀' : diffString,
+        ['Size old']: oldSize ? `${formatSize.format(oldSize)}kB` : '',
+        ['Size new']: newSize ? `${formatSize.format(newSize)}kB` : '',
+        ['Size diff']: !oldSize && newSize ? '🚀' : getDiffString(newSize, oldSize, formatSize),
+        ['First load old']: Old ? `${formatter.format(Old)}kB` : '',
+        ['First load new']: `${formatSize.format(New)}kB`,
+        ['First load diff']: !Old && New ? '🚀' : getDiffString(New, Old, formatter),
       }
     })
-
-    console.log(res)
 
     const table = tablemark(res, { caseHeaders: false })
     setOutput('diff', table)
     return table
   } catch (error) {
+    console.error(error.message)
     setFailed(error.message)
+  }
+
+  function getDiffString(New: number, Old: number, formatter: Intl.NumberFormat) {
+    const diff = Math.round(((New ?? 0) - (Old ?? 0)) * 10) / 10
+    let diffString = ''
+    if (diff > -1 && diff < 1) diffString = `☑️  ${formatter.format(diff)}kB`
+    if (diff >= 1) diffString = `⚠️  +${formatter.format(diff)}kB`
+    if (diff >= 5) diffString = `🚨  +${formatter.format(diff)}kB`
+    if (diff <= -1) diffString = `🔥  ${formatter.format(diff)}kB`
+    if (diff === 0) diffString = ''
+    return diffString
   }
 }
 
@@ -93,7 +101,14 @@ const parseOutput = (output: string, isNew = false) => {
   }> = shellParser(cleanOutput(output))
 
   return result.map((resultItem) => {
-    const kb = Number(resultItem.Load) || Number(resultItem.Size.replace('kB', '').trim())
+    const kb = Number(resultItem.Load) || Number(resultItem.Load.replace('kB', '').trim())
+    let sizeKb = Number(resultItem.Size.replace('kB', '').trim())
+    const sizeB = Number(resultItem.Size.replace('B', '').trim())
+
+    if (Number.isNaN(sizeKb) && Number.isFinite(sizeB)) {
+      sizeKb = sizeB / 1024
+    }
+    sizeKb = Math.round(sizeKb * 10) / 10
 
     let Page = resultItem?.Page?.replace('┌', '')
       ?.replace('├', '')
@@ -109,8 +124,8 @@ const parseOutput = (output: string, isNew = false) => {
     }
     return {
       Page,
-      ...(isNew && { New: kb }),
-      ...(!isNew && { Old: kb }),
+      ...(isNew && { firstLoad: kb, size: sizeKb }),
+      ...(!isNew && { firstLoad: kb, size: sizeKb }),
     }
   })
 }
