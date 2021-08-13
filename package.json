@@ -52,7 +52,6 @@
     "eslint-plugin-github": "^4.2.0",
     "eslint-plugin-jest": "^24.4.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "husky": "^7.0.1",
     "jest": "^27.0.6",
     "jest-circus": "^27.0.6",
     "js-yaml": "^4.1.0",
@@ -67,12 +66,6 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "prettier": {
     "trailingComma": "all",
