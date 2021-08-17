@@ -89,10 +89,10 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     const diff = Math.round(((New ?? 0) - (Old ?? 0)) * 10) / 10
     let diffString = ''
     if (diff > -1 && diff < 1) diffString = `${formatter.format(diff)}kB`
-    if (diff >= 1) diffString = `⚠️+${formatter.format(diff)}kB`
-    if (diff >= 5) diffString = `🚨+${formatter.format(diff)}kB`
-    if (diff <= -1) diffString = `☑️${formatter.format(diff)}kB`
-    if (diff <= -5) diffString = `🔥${formatter.format(diff)}kB`
+    if (diff >= 1) diffString = `+${formatter.format(diff)}kB⚠️`
+    if (diff >= 5) diffString = `+${formatter.format(diff)}kB🚨`
+    if (diff <= -1) diffString = `${formatter.format(diff)}kB`
+    if (diff <= -5) diffString = `${formatter.format(diff)}kB🔥`
     if (diff === 0) diffString = ''
     return diffString
   }
