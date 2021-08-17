@@ -1,0 +1,131 @@
+info  - Using webpack 5. Reason: Enabled by default https://nextjs.org/docs/messages/webpack5
+warn  - No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+info  - Checking validity of types...
+info  - Creating an optimized production build...
+> [PWA] Compile client (static)
+> [PWA] Auto register service worker with: /home/runner/work/m2-pwa/m2-pwa/new/node_modules/next-pwa/register.js
+> [PWA] Service worker: /home/runner/work/m2-pwa/m2-pwa/new/examples/soxbase/public/sw.js
+> [PWA]   url: /sw.js
+> [PWA]   scope: /
+> [PWA] Compile server
+info  - Compiled successfully
+info  - Collecting page data...
+info  - Generating static pages (0/165)
+info  - Generating static pages (41/165)
+info  - Generating static pages (82/165)
+info  - Generating static pages (123/165)
+info  - Generating static pages (165/165)
+info  - Finalizing page optimization...
+
+Page                                                                                                   Size     First Load JS
+┌ ● /                                                                                                  387 B           231 kB
+├   /_app                                                                                              0 B             149 kB
+├ ● /[...url] (ISR: 1200 Seconds) (4372 ms)                                                            3.42 kB         250 kB
+├   ├ /nl/women (1285 ms)
+├   ├ /nl-be/women (1081 ms)
+├   ├ /fr-be/women (1016 ms)
+├   └ /en/women (990 ms)
+├ ○ /404                                                                                               7.13 kB         223 kB
+├ ● /account                                                                                           12.7 kB         198 kB
+├ ● /account/addresses                                                                                 7.75 kB         211 kB
+├ ● /account/addresses/add                                                                             7.27 kB         226 kB
+├ ● /account/addresses/edit                                                                            6.66 kB         228 kB
+├ ● /account/authentication                                                                            4.7 kB          224 kB
+├ ● /account/contact                                                                                   5.02 kB         224 kB
+├ ● /account/forgot*** kB         221 kB
+├ ● /account/name                                                                                      4.01 kB         226 kB
+├ ● /account/orders                                                                                    7.32 kB         199 kB
+├ ● /account/orders/view                                                                               6.13 kB         198 kB
+├ ● /account/reviews                                                                                   10.2 kB         194 kB
+├ ● /account/reviews/add                                                                               12.5 kB         221 kB
+├ ● /account/signin                                                                                    7.15 kB         230 kB
+├ ● /blog                                                                                              2.56 kB         234 kB
+├ ● /blog/[url]                                                                                        2.01 kB         233 kB
+├ ● /blog/page/[page]                                                                                  2.52 kB         234 kB
+├ ● /blog/tagged/[url]                                                                                 2.03 kB         233 kB
+├ ● /brands/[url] (1431 ms)                                                                            3.32 kB         230 kB
+├   ├ /nl-be/brands/index (377 ms)
+├   ├ /nl/brands/index (360 ms)
+├   ├ /en/brands/index (351 ms)
+├   └ /fr-be/brands/index (343 ms)
+├ ● /cart                                                                                              13 kB           233 kB
+├ ● /checkout                                                                                          11.6 kB         227 kB
+├ ● /checkout/payment                                                                                  79.3 kB         295 kB
+├ ● /checkout/success                                                                                  8.57 kB         198 kB
+├ ● /customer/account/createPassword                                                                   8.48 kB         221 kB
+├ ● /legal/[url] (1376 ms)                                                                             3.31 kB         230 kB
+├   ├ /fr-be/legal/index (357 ms)
+├   ├ /en/legal/index (349 ms)
+├   ├ /nl/legal/index (337 ms)
+├   └ /nl-be/legal/index (333 ms)
+├ ● /modal/[...url] (1426 ms)                                                                          7.36 kB         209 kB
+├   ├ /nl/modal/modal (395 ms)
+├   ├ /en/modal/modal (373 ms)
+├   ├ /nl-be/modal/modal (332 ms)
+├   └ /fr-be/modal/modal (326 ms)
+├ ● /page/[url] (ISR: 1200 Seconds) (6161 ms)                                                          298 B           231 kB
+├   ├ /nl/page/home (1325 ms)
+├   ├ /fr-be/page/home (734 ms)
+├   ├ /nl-be/page/home (724 ms)
+├   ├ /nl/page/no-route (709 ms)
+├   ├ /en/page/home (709 ms)
+├   ├ /en/page/no-route (663 ms)
+├   ├ /nl-be/page/no-route (649 ms)
+├   └ /fr-be/page/no-route (648 ms)
+├ ● /product/[url]                                                                                     1.67 kB         258 kB
+├ ● /product/bundle/[url] (ISR: 1200 Seconds) (3921 ms)                                                1.62 kB         258 kB
+├   ├ /nl/product/bundle/giftcard-bundle-gc-1098 (1009 ms)
+├   ├ /fr-be/product/bundle/giftcard-bundle-gc-1098 (986 ms)
+├   ├ /en/product/bundle/giftcard-bundle-gc-1098 (976 ms)
+├   └ /nl-be/product/bundle/giftcard-bundle-gc-1098 (950 ms)
+├ ● /product/configurable/[url] (ISR: 1200 Seconds) (2950 ms)                                          6.26 kB         261 kB
+├   ├ /fr-be/product/configurable/gc-fruity-sock (806 ms)
+├   ├ /nl/product/configurable/gc-fruity-sock (772 ms)
+├   ├ /en/product/configurable/gc-fruity-sock (710 ms)
+├   └ /nl-be/product/configurable/gc-fruity-sock (662 ms)
+├ ● /product/downloadable/[url] (ISR: 1200 Seconds) (3954 ms)                                          1.57 kB         258 kB
+├   ├ /nl/product/downloadable/tamara-socks-printable-birthday-postcard-gc-533-bdayprint (1032 ms)
+├   ├ /fr-be/product/downloadable/tamara-socks-printable-birthday-postcard-gc-533-bdayprint (1023 ms)
+├   ├ /en/product/downloadable/tamara-socks-printable-birthday-postcard-gc-533-bdayprint (963 ms)
+├   └ /nl-be/product/downloadable/tamara-socks-printable-birthday-postcard-gc-533-bdayprint (936 ms)
+├ ● /product/grouped/[url]                                                                             1.77 kB         258 kB
+├ ● /product/virtual/[url]                                                                             1.45 kB         258 kB
+├ ● /search/[[...url]] (ISR: 1 Seconds) (1375 ms)                                                      4.08 kB         249 kB
+├   └ /nl/search (1375 ms)
+├ ● /service/[[...url]] (ISR: 1200 Seconds) (1541 ms)                                                  7.92 kB         206 kB
+├   ├ /nl-be/service (409 ms)
+├   ├ /fr-be/service (390 ms)
+├   ├ /nl/service (378 ms)
+├   └ /en/service (364 ms)
+├ ● /switch-stores                                                                                     8.24 kB         186 kB
+├ ● /test/[[...url]] (4315 ms)                                                                         3.68 kB         216 kB
+├   ├ /nl/test/index (706 ms)
+├   ├ /en/test/index (673 ms)
+├   ├ /fr-be/test/index (640 ms)
+├   ├ /nl-be/test/index (640 ms)
+├   ├ /fr-be/test/other (493 ms)
+├   ├ /nl/test/other (406 ms)
+├   ├ /en/test/other (387 ms)
+├   └ /nl-be/test/other (370 ms)
+├ ● /test/full-page-shell-no-title                                                                     4.1 kB          217 kB
+├ ● /test/minimal-page-shell-subheader/[[...url]] (ISR: 1 Seconds) (414 ms)                            9.71 kB         234 kB
+├   └ /nl/test/minimal-page-shell-subheader (414 ms)
+├ ○ /test/minimal-page-shell/[[...url]] (752 ms)                                                       5.52 kB         181 kB
+├ ○ /test/sheet/[[...url]]                                                                             7.43 kB         194 kB
+├ ● /test/slider                                                                                       6.2 kB          215 kB
+└ ● /test/typography                                                                                   6.17 kB         171 kB
++ First Load JS shared by all                                                                          149 kB
+  ├ chunks/framework.56dc96.js                                                                         42.7 kB
+  ├ chunks/main.fc9dd7.js                                                                              24 kB
+  ├ chunks/pages/_app.3c9bcd.js                                                                        80.5 kB
+  └ chunks/webpack.96451f.js                                                                           1.62 kB
+
+λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+●  (SSG)     automatically generated as static HTML + JSON (uses getStaticProps)
+   (ISR)     incremental static regeneration (uses revalidate in getStaticProps)

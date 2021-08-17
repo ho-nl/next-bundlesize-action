@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { setOutput, setFailed, debug } from '@actions/core'
-import { promises as fs } from 'fs'
+import { promises as fs, readdir } from 'fs'
 import path from 'path'
 import shellParser from 'node-shell-parser'
 import tablemark from 'tablemark'
@@ -54,22 +54,28 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     const formatSize = Intl.NumberFormat(undefined, {
       minimumFractionDigits: 1,
     })
-    const res = [...pages.values()].map((page) => {
-      const Old = oldBuild?.[page]?.firstLoad
-      const oldSize = oldBuild?.[page]?.size
-      const New = newBuild?.[page]?.firstLoad
-      const newSize = newBuild?.[page]?.size
+    const res = [...pages.values()]
+      .map((page) => {
+        const Old = oldBuild?.[page]?.firstLoad
+        const oldSize = oldBuild?.[page]?.size
+        const New = newBuild?.[page]?.firstLoad
+        const newSize = newBuild?.[page]?.size
 
-      return {
-        Page: page,
-        ['Size old']: oldSize ? `${formatSize.format(oldSize)}kB` : '',
-        ['Size new']: newSize ? `${formatSize.format(newSize)}kB` : '',
-        ['Size diff']: !oldSize && newSize ? '🚀' : getDiffString(newSize, oldSize, formatSize),
-        ['First load old']: Old ? `${formatter.format(Old)}kB` : '',
-        ['First load new']: `${formatSize.format(New)}kB`,
-        ['First load diff']: !Old && New ? '🚀' : getDiffString(New, Old, formatter),
-      }
-    })
+        if (Old === New && oldSize === newSize) return undefined
+
+        return {
+          Page: page,
+          ['Size old']: oldSize ? `${formatSize.format(oldSize)}kB` : '',
+          ['Size new']: newSize ? `${formatSize.format(newSize)}kB` : '',
+          ['Size diff']: !oldSize && newSize ? '🆕' : getDiffString(newSize, oldSize, formatSize),
+          ['First load old']: Old ? `${formatter.format(Old)}kB` : '',
+          ['First load new']: `${formatSize.format(New)}kB`,
+          ['First load diff']: !Old && New ? '🆕' : getDiffString(New, Old, formatter),
+        }
+      })
+      .filter((v) => !!v)
+
+    if (!res.length) return 'No change in bundle size detected 🎉'
 
     const table = tablemark(res, { caseHeaders: false })
     setOutput('diff', table)
