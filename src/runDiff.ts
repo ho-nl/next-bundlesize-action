@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { setOutput, setFailed, debug } from '@actions/core'
-import { promises as fs, readdir } from 'fs'
+import { setOutput, setFailed, } from '@actions/core'
+import { promises as fs, } from 'fs'
 import path from 'path'
 import shellParser from 'node-shell-parser'
 import tablemark from 'tablemark'
-import { merge } from 'lodash'
 
 const START = `Automatically optimizing pages`
 const STARTNEW = `Finalizing page optimization`
@@ -63,14 +62,20 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
 
         if (Old === New && oldSize === newSize) return undefined
 
+        let dirsfirstLoadDiff = !Old && New ? '🆕' : getDiffString(New, Old, formatter)
+        if (Old && !New) dirsfirstLoadDiff = '🗑'
+
+        let sizeDiff = !oldSize && newSize ? '🆕' : getDiffString(newSize, oldSize, formatSize)
+        if (oldSize && !newSize) sizeDiff = ''
+
         return {
           Page: page,
           ['Size old']: oldSize ? `${formatSize.format(oldSize)}kB` : '',
           ['Size new']: newSize ? `${formatSize.format(newSize)}kB` : '',
-          ['Size diff']: !oldSize && newSize ? '🆕' : getDiffString(newSize, oldSize, formatSize),
+          ['Size diff']: sizeDiff,
           ['First load old']: Old ? `${formatter.format(Old)}kB` : '',
-          ['First load new']: `${formatSize.format(New)}kB`,
-          ['First load diff']: !Old && New ? '🆕' : getDiffString(New, Old, formatter),
+          ['First load new']: New && `${formatSize.format(New)}kB`,
+          ['First load diff']: dirsfirstLoadDiff,
         }
       })
       .filter((v) => !!v)
@@ -81,7 +86,7 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     setOutput('diff', table)
     return table
   } catch (error) {
-    console.error(error.message)
+    console.trace(error.message)
     setFailed(error.message)
   }
 
@@ -100,7 +105,8 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
 
 const parseOutput = (output: string, isNew = false) => {
   const result: Array<{
-    Page: string
+    Route: string
+    '(pages)': string
     Size: string
     First: string
     Load: string
@@ -117,7 +123,10 @@ const parseOutput = (output: string, isNew = false) => {
     }
     sizeKb = Math.round(sizeKb * 10) / 10
 
-    let Page = resultItem?.Page?.replace('┌', '')
+    const pageName = resultItem?.Route + resultItem?.['(pages)']
+
+
+    let Page = pageName?.replace('┌', '')
       ?.replace('├', '')
       ?.replace('└', '')
       ?.replace('●', '')
