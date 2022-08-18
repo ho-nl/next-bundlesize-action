@@ -31,7 +31,7 @@
     "setup"
   ],
   "dependencies": {
-    "@actions/core": "^1.4.0",
+    "@actions/core": "^1.9.1",
     "lodash-es": "^4.17.21",
     "node-shell-parser": "^0.2.1",
     "tablemark": "^2.0.0"
