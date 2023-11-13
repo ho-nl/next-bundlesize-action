@@ -9,7 +9,6 @@ test('creates proper diff', async () => {
   console.log(`\n${diff}`)
 })
 
-
 test('creates no diff', async () => {
   const diff = await runDiff({
     GITHUB_WORKSPACE: path.join(__dirname, 'fixture-same'),

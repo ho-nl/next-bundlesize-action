@@ -2010,14 +2010,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zeit/ncc@npm:^0.22.3":
-  version: 0.22.3
-  resolution: "@zeit/ncc@npm:0.22.3"
+"@vercel/ncc@npm:^0.38.1":
+  version: 0.38.1
+  resolution: "@vercel/ncc@npm:0.38.1"
   dependencies:
     node-gyp: "npm:latest"
   bin:
     ncc: dist/ncc/cli.js
-  checksum: 472ba6e650ec5451c217c558221ec5111204c789da051ee678d487a1d70d8ff191f9c05ee27cdfcb09012d1a08acf46a88399f017e5ce238f572e85d9d00548f
+  checksum: 3e6c08251ccc8c6c7ca6523f223e326c70950af787259252c8a19ef04a7f8cc4c42d4c1ddb94f227a9d0d1c5429f71e303daf6a356948b4f81bcd38d075c9b24
   languageName: node
   linkType: hard
 
@@ -7066,7 +7066,7 @@ __metadata:
     "@types/node": "npm:^16.18.61"
     "@typescript-eslint/eslint-plugin": "npm:^4.33.0"
     "@typescript-eslint/parser": "npm:^4.33.0"
-    "@zeit/ncc": "npm:^0.22.3"
+    "@vercel/ncc": "npm:^0.38.1"
     eslint: "npm:^8.53.0"
     eslint-plugin-github: "npm:^4.10.1"
     eslint-plugin-jest: "npm:^24.7.0"
