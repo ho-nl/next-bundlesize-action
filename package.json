@@ -1,5 +1,5 @@
 {
-  "name": "typescript-action",
+  "name": "next-bundlesize-action",
   "version": "1.9.1",
   "private": true,
   "publishConfig": {
@@ -13,9 +13,6 @@
   },
   "author": "YourNameOrOrganization",
   "main": "lib/main.js",
-  "engines": {
-    "node": "14.x"
-  },
   "scripts": {
     "all": "yarn build && yarn format && yarn run pack && yarn test",
     "build": "tsc",
@@ -31,7 +28,7 @@
     "setup"
   ],
   "dependencies": {
-    "@actions/core": "^1.4.0",
+    "@actions/core": "^1.10.1",
     "lodash-es": "^4.17.21",
     "node-shell-parser": "^0.2.1",
     "tablemark": "^2.0.0"
@@ -40,27 +37,27 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@semantic-release/git": "^9.0.0",
-    "@types/diff": "^5.0.1",
-    "@types/jest": "^27.0.0",
-    "@types/lodash": "^4.14.172",
-    "@types/lodash-es": "^4.17.4",
-    "@types/node": "^16.6.0",
-    "@typescript-eslint/eslint-plugin": "^4.29.1",
-    "@typescript-eslint/parser": "^4.29.1",
+    "@types/diff": "^5.0.8",
+    "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.14.201",
+    "@types/lodash-es": "^4.17.11",
+    "@types/node": "^16.18.61",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "@zeit/ncc": "^0.22.3",
-    "eslint": "^7.32.0",
-    "eslint-plugin-github": "^4.2.0",
-    "eslint-plugin-jest": "^24.4.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "jest": "^27.0.6",
-    "jest-circus": "^27.0.6",
+    "eslint": "^8.53.0",
+    "eslint-plugin-github": "^4.10.1",
+    "eslint-plugin-jest": "^24.7.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "jest": "^27.5.1",
+    "jest-circus": "^27.5.1",
     "js-yaml": "^4.1.0",
-    "prettier": "^2.3.2",
-    "prettier-plugin-package": "^1.3.0",
-    "pretty-quick": "^3.1.1",
-    "semantic-release": "^17.4.4",
-    "ts-jest": "^27.0.4",
-    "typescript": "^4.3.5"
+    "prettier": "^2.8.8",
+    "prettier-plugin-package": "^1.3.1",
+    "pretty-quick": "^3.1.3",
+    "semantic-release": "^17.4.7",
+    "ts-jest": "^27.1.5",
+    "typescript": "^5.2.2"
   },
   "commitlint": {
     "extends": [
@@ -109,5 +106,6 @@
         "name": "master"
       }
     ]
-  }
+  },
+  "packageManager": "yarn@4.0.1"
 }

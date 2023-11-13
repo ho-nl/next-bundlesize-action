@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { setOutput, setFailed, } from '@actions/core'
-import { promises as fs, } from 'fs'
+import { setOutput, setFailed } from '@actions/core'
+import { promises as fs } from 'fs'
 import path from 'path'
 import shellParser from 'node-shell-parser'
 import tablemark from 'tablemark'
@@ -30,6 +30,11 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     env = { ...process.env, ...env }
 
     const pages = new Set<string>()
+
+    console.log({
+      old: path.join(env.GITHUB_WORKSPACE!, 'old.txt'),
+      new: path.join(env.GITHUB_WORKSPACE!, 'new.txt'),
+    })
 
     const oldBuild = Object.fromEntries(
       parseOutput((await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString())
@@ -86,8 +91,10 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     setOutput('diff', table)
     return table
   } catch (error) {
-    console.trace(error.message)
-    setFailed(error.message)
+    if (error instanceof Error) {
+      console.trace(error.message)
+      setFailed(error.message)
+    }
   }
 
   function getDiffString(New: number, Old: number, formatter: Intl.NumberFormat) {
@@ -125,8 +132,8 @@ const parseOutput = (output: string, isNew = false) => {
 
     const pageName = resultItem?.Route + resultItem?.['(pages)']
 
-
-    let Page = pageName?.replace('┌', '')
+    let Page = pageName
+      ?.replace('┌', '')
       ?.replace('├', '')
       ?.replace('└', '')
       ?.replace('●', '')
