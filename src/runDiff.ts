@@ -36,6 +36,9 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
       new: path.join(env.GITHUB_WORKSPACE!, 'new.txt'),
     })
 
+    console.log('oldContent', await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt')))
+    console.log('oldContent', await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt')))
+
     const oldBuild = Object.fromEntries(
       parseOutput((await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString())
         .filter((p) => p.firstLoad)
