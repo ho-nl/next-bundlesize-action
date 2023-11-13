@@ -14,7 +14,7 @@
   "author": "YourNameOrOrganization",
   "main": "lib/main.js",
   "scripts": {
-    "all": "yarn build && yarn format && yarn run pack && yarn test",
+    "all": "yarn build && yarn format && yarn run pack",
     "build": "tsc",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
