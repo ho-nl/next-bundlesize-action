@@ -5,24 +5,16 @@ import path from 'path'
 import shellParser from 'node-shell-parser'
 import tablemark from 'tablemark'
 
-const START = `Automatically optimizing pages`
-const STARTNEW = `Finalizing page optimization`
-const END = '+ First Load JS shared by all'
-
 const cleanOutput = (output: string): string => {
-  if (output.includes(START)) {
-    return output
-      .substring(output.indexOf(START) + START.length, output.indexOf(END))
-      .replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
+  const startLocation = output.indexOf('Route (pages)')
+  const endLocation = output.indexOf('\n\n', startLocation)
+
+  if (startLocation < 0 || endLocation < 0) {
+    console.log('Can not parse the build cli output')
+    throw Error('Can not parse the build cli output')
   }
 
-  if (output.includes(STARTNEW)) {
-    return output
-      .substring(output.indexOf(STARTNEW) + STARTNEW.length, output.indexOf(END))
-      .replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
-  }
-
-  throw new Error('Ouput START can not be found')
+  return output.substring(startLocation, endLocation).replace(/^[\r\n.\ ]+|[\r\n.\ ]+$/g, '')
 }
 
 export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | string> {
@@ -30,14 +22,6 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
     env = { ...process.env, ...env }
 
     const pages = new Set<string>()
-
-    console.log({
-      old: path.join(env.GITHUB_WORKSPACE!, 'old.txt'),
-      new: path.join(env.GITHUB_WORKSPACE!, 'new.txt'),
-    })
-
-    console.log('oldContent', await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt')))
-    console.log('oldContent', await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'new.txt')))
 
     const oldBuild = Object.fromEntries(
       parseOutput((await fs.readFile(path.join(env.GITHUB_WORKSPACE!, 'old.txt'))).toString())
@@ -114,6 +98,7 @@ export async function runDiff(env?: Partial<NodeJS.ProcessEnv>): Promise<void | 
 }
 
 const parseOutput = (output: string, isNew = false) => {
+  console.log(cleanOutput(output))
   const result: Array<{
     Route: string
     '(pages)': string

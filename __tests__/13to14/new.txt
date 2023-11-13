@@ -1,0 +1,352 @@
+💡 🕸️  Mesh Cleaning existing artifacts
+💡 🕸️  Mesh Reading the configuration
+💡 🕸️  Mesh Generating the unified schema
+💡 🕸️  Mesh Generating artifacts
+💡 🕸️  Mesh Generating index file in TypeScript
+💡 🕸️  Mesh Writing index.ts for CJS to the disk.
+💡 🕸️  Mesh Cleanup
+💡 🕸️  Mesh Done! => /home/runner/work/graphcommerce/graphcommerce/new/examples/magento-graphcms/.mesh
+[STARTED] Parse Configuration
+[SUCCESS] Parse Configuration
+[STARTED] Generate outputs
+[STARTED] Generate to ../../packages/graphql/generated/types.ts
+[STARTED] Generate to ../../packages/graphql/generated/fragments.json
+[STARTED] Load GraphQL schemas
+[STARTED] Load GraphQL schemas
+[SUCCESS] Load GraphQL schemas
+[SUCCESS] Load GraphQL schemas
+[STARTED] Load GraphQL documents
+[STARTED] Load GraphQL documents
+[SUCCESS] Load GraphQL documents
+[SUCCESS] Load GraphQL documents
+[STARTED] Generate
+[STARTED] Generate
+[SUCCESS] Generate
+[SUCCESS] Generate
+[SUCCESS] Generate to ../../packages/graphql/generated/types.ts
+[SUCCESS] Generate to ../../packages/graphql/generated/fragments.json
+[STARTED] Generate to .
+[STARTED] Generate to ../../packages
+[STARTED] Load GraphQL schemas
+[STARTED] Load GraphQL schemas
+[SUCCESS] Load GraphQL schemas
+[SUCCESS] Load GraphQL schemas
+[STARTED] Load GraphQL documents
+[STARTED] Load GraphQL documents
+[SUCCESS] Load GraphQL documents
+[SUCCESS] Load GraphQL documents
+[STARTED] Generate
+[STARTED] Generate
+[SUCCESS] Generate
+[SUCCESS] Generate
+[SUCCESS] Generate to .
+[SUCCESS] Generate to ../../packages
+[STARTED] Generate to ../../packagesDev
+[STARTED] Load GraphQL schemas
+[SUCCESS] Load GraphQL schemas
+[STARTED] Load GraphQL documents
+[SUCCESS] Load GraphQL documents
+[STARTED] Generate
+[SUCCESS] Generate
+[SUCCESS] Generate to ../../packagesDev
+[SUCCESS] Generate outputs
+⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+   Skipping linting
+   Checking validity of types ...
+   ▲ Next.js 14.0.2
+   - Experiments (use at your own risk):
+     · swcPlugins
+     · scrollRestoration
+
+   Creating an optimized production build ...
+ ✓ (pwa) Compiling for server...
+ ✓ (pwa) Compiling for server...
+ ✓ (pwa) Compiling for client (static)...
+ ○ (pwa) Service worker: /home/runner/work/graphcommerce/graphcommerce/new/examples/magento-graphcms/public/sw.js
+ ○ (pwa)   URL: /sw.js
+ ○ (pwa)   Scope: /
+ ○ (pwa) Custom runtimeCaching array found, using it to extend the default one.
+ ✓ Compiled successfully
+   Collecting page data ...
+   Generating static pages (0/286) ...
+
+Operation              Mesh    Source Timeline                                           
+GetCategoryStaticPaths 1895ms         ├─────────────────────────────────┤                
+BlogPaths              171ms                                               ├──┤          
+CartAgreements         203ms                                                   ├──┤      
+ProductStaticPaths     139ms                                                       ├─┤   
+PagesStaticPaths       38ms                                                            ├┤
+Total time             2718ms         ├─────────────────────────────────────────────────┤
+
+Operation        Mesh   Source Timeline                          
+StoreConfig      234ms         ├──────────┤                      
+FilterInputTypes 48ms          ├─┤                               
+CategoryPage     160ms         ├───────┤                         
+Layout           190ms         ├────────┤                        
+HygraphAllPages  118ms                 ├────┤                    
+AllDynamicRows   112ms                 ├────┤                    
+HygraphPages     109ms                       ├────┤              
+ProductFilters   231ms                             ├──────────┤  
+ProductList      265ms                             ├────────────┤
+Total time       668ms         ├────────────────────────────────┤
+
+Operation        Mesh   Source Timeline                             
+StoreConfig      287ms         ├─────────────┤                      
+FilterInputTypes 108ms         ├────┤                               
+CategoryPage     208ms         ├─────────┤                          
+Layout           239ms         ├──────────┤                         
+HygraphAllPages  81ms                    ├───┤                      
+AllDynamicRows   209ms                   ├─────────┤                
+HygraphPages     135ms                        ├─────┤               
+ProductFilters   268ms                              ├────────────┤  
+ProductList      298ms                               ├─────────────┤
+Total time       738ms         ├───────────────────────────────────┤
+
+Operation        Mesh   Source Timeline                
+StoreConfig      238ms         ├──────────┤            
+FilterInputTypes 50ms          ├─┤                     
+CategoryPage     194ms         ├────────┤              
+Layout           141ms         ├──────┤                
+HygraphAllPages  43ms                   ├─┤            
+AllDynamicRows   90ms                    ├───┤         
+HygraphPages     57ms                      ├─┤         
+ProductFilters   158ms                        ├──────┤ 
+ProductList      165ms                        ├───────┤
+Total time       475ms         ├──────────────────────┤
+
+Operation        Mesh   Source Timeline                  
+StoreConfig      300ms         ├──────────────┤          
+FilterInputTypes 31ms          ├┤                        
+CategoryPage     121ms         ├─────┤                   
+Layout           136ms         ├─────┤                   
+HygraphAllPages  54ms                ├─┤                 
+AllDynamicRows   160ms               ├───────┤           
+HygraphPages     98ms                    ├───┤           
+ProductFilters   201ms                        ├─────────┤
+ProductList      194ms                        ├────────┤ 
+Total time       513ms         ├────────────────────────┤
+
+Operation        Mesh   Source Timeline             
+StoreConfig      230ms         ├──────────┤         
+FilterInputTypes 20ms          ├┤                   
+CategoryPage     140ms         ├──────┤             
+Layout           111ms         ├────┤               
+HygraphAllPages  19ms                 ├┤            
+AllDynamicRows   84ms                 ├───┤         
+HygraphPages     73ms                  ├──┤         
+ProductFilters   168ms                     ├───────┤
+ProductList      168ms                     ├───────┤
+Total time       418ms         ├───────────────────┤
+
+Operation        Mesh   Source Timeline                     
+StoreConfig      206ms         ├─────────┤                  
+FilterInputTypes 41ms          ├─┤                          
+CategoryPage     122ms         ├─────┤                      
+Layout           152ms         ├──────┤                     
+HygraphAllPages  97ms                ├───┤                  
+AllDynamicRows   85ms                ├───┤                  
+HygraphPages     119ms                      ├────┤          
+ProductFilters   182ms                            ├────────┤
+ProductList      186ms                            ├────────┤
+Total time       576ms         ├───────────────────────────┤
+
+Operation      Mesh   Source Timeline
+CartAgreements 149ms         ├──────┤
+Total time     149ms         ├──────┤
+
+Operation    Mesh   Source Timeline                             
+ProductPage2 698ms         ├─────────────────────────────────┤  
+HygraphPages 607ms         ├─────────────────────────────┤      
+Usps         36ms                                            ├┤ 
+Total time   735ms         ├───────────────────────────────────┤
+
+Operation    Mesh    Source Timeline                                           
+ProductPage2 994ms          ├────────────────────┤                             
+HygraphPages 929ms          ├──────────────────┤                               
+Usps         24ms                                ├┤                            
+HygraphPages 25ms                                                            ├┤
+Total time   2359ms         ├─────────────────────────────────────────────────┤
+
+   Generating static pages (71/286) 
+
+Operation      Mesh   Source Timeline         
+CountryRegions 329ms         ├───────────────┤
+Total time     329ms         ├───────────────┤
+
+   Generating static pages (142/286) 
+
+Operation      Mesh    Source Timeline                                           
+CountryRegions 341ms          ├──────────┤                                       
+BlogList       25ms                                                            ├┤
+BlogPaths      25ms                                                            ├┤
+HygraphPages   29ms                                                            ├┤
+Total time     1453ms         ├─────────────────────────────────────────────────┤
+
+   Generating static pages (214/286) 
+
+Operation      Mesh   Source Timeline                            
+ProductList    113ms         ├────┤                              
+ProductList    117ms         ├────┤                              
+ProductList    122ms         ├─────┤                             
+HygraphPages   39ms          ├┤                                  
+HygraphPages   19ms                                      ├┤      
+ProductFilters 93ms                                        ├───┤ 
+ProductList    106ms                                       ├────┤
+Total time     715ms         ├──────────────────────────────────┤
+
+Operation      Mesh   Source Timeline
+ProductFilters 93ms          ├───┤   
+ProductList    109ms         ├────┤  
+Total time     109ms         ├────┤  
+
+Operation      Mesh  Source Timeline
+ProductFilters 92ms         ├───┤   
+ProductList    99ms         ├───┤   
+Total time     99ms         ├───┤   
+
+Operation      Mesh   Source Timeline
+ProductFilters 99ms          ├───┤   
+ProductList    119ms         ├────┤  
+Total time     119ms         ├────┤  
+
+Operation      Mesh   Source Timeline
+ProductFilters 91ms          ├───┤   
+ProductList    100ms         ├────┤  
+Total time     100ms         ├────┤  
+
+Operation      Mesh   Source Timeline
+ProductFilters 96ms          ├───┤   
+ProductList    104ms         ├────┤  
+Total time     104ms         ├────┤  
+
+Operation         Mesh   Source Timeline 
+StoreSwitcherList 167ms         ├───────┤
+Total time        167ms         ├───────┤
+
+ ✓ Generating static pages (286/286) 
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (pages)                                            Size     First Load JS
+┌ ● /                                                    5.38 kB         289 kB
+├   /_app                                                0 B             192 kB
+├ ● /[...url] (ISR: 1200 Seconds) (5226 ms)              3.11 kB         314 kB
+├   ├ /en/women (1173 ms)
+├   ├ /nl/dames (1033 ms)
+├   ├ /nl-be/women (844 ms)
+├   ├ /en-ca/women (808 ms)
+├   ├ /fr-be/women (707 ms)
+├   └ /en-gb/women (661 ms)
+├ ○ /404                                                 5.99 kB         240 kB
+├ ● /account                                             10.5 kB         245 kB
+├ ● /account/addresses                                   11.7 kB         252 kB
+├ ● /account/addresses/add                               7.47 kB         271 kB
+├ ● /account/addresses/edit                              2.28 kB         269 kB
+├ ● /account/authentication                              7.63 kB         268 kB
+├ ● /account/contact                                     7.83 kB         268 kB
+├ ● /account/forgot-password                             5.2 kB          261 kB
+├ ● /account/name                                        8.02 kB         268 kB
+├ ● /account/orders                                      7.36 kB         246 kB
+├ ● /account/orders/view                                 7.62 kB         246 kB
+├ ● /account/reviews                                     5.03 kB         240 kB
+├ ● /account/reviews/add                                 7.35 kB         266 kB
+├ ● /account/signin                                      10.6 kB         279 kB
+├ λ /api/graphql                                         0 B             192 kB
+├ λ /api/preview                                         0 B             192 kB
+├ ● /blog                                                1.52 kB         290 kB
+├ ● /blog/[url]                                          2.12 kB         291 kB
+├ ● /blog/page/[page]                                    1.5 kB          290 kB
+├ ● /blog/tagged/[url]                                   2.14 kB         291 kB
+├ λ /c/[...url]                                          3.14 kB         314 kB
+├ ● /cart                                                3.4 kB          297 kB
+├ ● /checkout                                            13.1 kB         275 kB
+├ ● /checkout/added                                      9.63 kB         251 kB
+├ ● /checkout/customer/addresses/edit                    7.2 kB          269 kB
+├ ● /checkout/edit/billing-address                       2.99 kB         267 kB
+├ ● /checkout/payment                                    13.3 kB         290 kB
+├ ● /checkout/success                                    5.12 kB         293 kB
+├ ● /checkout/terms/[url] (ISR: 1200 Seconds) (3162 ms)  2.78 kB         221 kB
+├   ├ /en/checkout/terms/terms-and-conditions
+├   ├ /en/checkout/terms/service-agreement
+├   ├ /en/checkout/terms/privacy-policy
+├   └ [+15 more paths]
+├ ● /compare                                             11.5 kB         282 kB
+├ ● /customer/account/createPassword                     7.08 kB         263 kB
+├ ● /modal/[...url]                                      8.15 kB         271 kB
+├   ├ /en/modal/modal
+├   ├ /nl/modal/modal
+├   ├ /fr-be/modal/modal
+├   └ [+3 more paths]
+├ ● /newsletter                                          8.28 kB         296 kB
+├ ● /p/[url] (ISR: 1200 Seconds) (5572 ms)               13.1 kB         331 kB
+├   ├ /en-ca/p/text-area-option-test (1223 ms)
+├   ├ /en/p/text-area-option-test (962 ms)
+├   ├ /en-gb/p/text-area-option-test (905 ms)
+├   ├ /nl/p/text-area-option-test (900 ms)
+├   ├ /nl-be/p/text-area-option-test (827 ms)
+├   └ /fr-be/p/text-area-option-test (755 ms)
+├ ● /product/[url]                                       1.03 kB         326 kB
+├ ● /product/bundle/[url]                                1 kB            326 kB
+├ ● /product/configurable/[url]                          8.93 kB         328 kB
+├ ● /product/downloadable/[url]                          1.4 kB          326 kB
+├ ● /product/grouped/[url]                               1.38 kB         326 kB
+├ ● /product/virtual/[url]                               1.3 kB          326 kB
+├ λ /products-sitemap.xml                                258 B           192 kB
+├ ● /search                                              4.34 kB         322 kB
+├ λ /search/[...url]                                     4.37 kB         322 kB
+├ ● /service/[[...url]] (ISR: 1200 Seconds) (573 ms)     8.09 kB         271 kB
+├   ├ /en/service
+├   ├ /nl/service
+├   ├ /fr-be/service
+├   └ [+3 more paths]
+├ ● /switch-stores                                       7.45 kB         226 kB
+├ ● /test/[[...url]] (1353 ms)                           4.27 kB         245 kB
+├   ├ /en/test/index
+├   ├ /en/test/other
+├   ├ /nl/test/index
+├   └ [+9 more paths]
+├ ● /test/buttons                                        7.57 kB         217 kB
+├ ● /test/icons                                          7.37 kB         223 kB
+├ ○ /test/minimal-page-shell/[[...url]]                  8.48 kB         218 kB
+├ ● /test/number-inputs                                  7.81 kB         250 kB
+├ ○ /test/sheet                                          5.07 kB         232 kB
+├ ● /test/slider                                         4.1 kB          248 kB
+├ ● /test/typography                                     7.1 kB          216 kB
+├ ○ /test/usebacklink/[[...url]]                         6.47 kB         209 kB
+└ ● /wishlist                                            9.45 kB         274 kB
++ First Load JS shared by all                            192 kB
+  ├ chunks/framework-5ccd8d6d85c444a9.js                 45.2 kB
+  ├ chunks/main-06f795a58a545937.js                      34.6 kB
+  ├ chunks/pages/_app-ae66af2c0862b4e8.js                110 kB
+  └ chunks/webpack-f62314360874aed3.js                   2.01 kB
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses getStaticProps)
+   (ISR)      incremental static regeneration (uses revalidate in getStaticProps)
+λ  (Dynamic)  server-rendered on demand using Node.js
+
+✨ [next-sitemap] Loading next-sitemap config: file:///home/runner/work/graphcommerce/graphcommerce/new/examples/magento-graphcms/next-sitemap.config.js
+✅ [next-sitemap] Generation completed
+┌───────────────┬────────┐
+│    (index)    │ Values │
+├───────────────┼────────┤
+│ indexSitemaps │   1    │
+│   sitemaps    │   1    │
+└───────────────┴────────┘
+-----------------------------------------------------
+ SITEMAP INDICES 
+-----------------------------------------------------
+
+   ○ https://graphcommerce.vercel.app/sitemap.xml
+
+
+-----------------------------------------------------
+ SITEMAPS 
+-----------------------------------------------------
+
+   ○ https://graphcommerce.vercel.app/sitemap-0.xml
